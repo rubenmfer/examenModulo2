@@ -2,10 +2,10 @@ import pymysql
 from flask import Flask, render_template, request
 
 # Insertar credenciales de la base de datos
-host = 'database-1.cc0vj7wcnr6u.us-east-1.rds.amazonaws.com'
+host = 'XXXXXXXXXX'
 port = 3306
-user = 'admin'
-password = 'mysql1234'
+user = 'XXXXX'
+password = 'XXXXX'
 database = 'examen'
 
 # Conectar a la base de datos
