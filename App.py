@@ -36,27 +36,19 @@ def comparar():
     cursor = connection.cursor()
     if comp == 1:
         comparacion = "Los textos son IGUALES"
-        
         query = 'INSERT INTO formulario (name, texto1, texto2, comparacion) VALUES ("'+usuario +'", "'+texto1 +'", "'+texto2+'", 1)'
         print('INSERT INTO formulario (name, texto1, texto2, comparacion) VALUES ("'+usuario +'", "'+texto1 +'", "'+texto2+'", 1)')
 
     else:
         comparacion = "Los textos son DIFERENTES"
-        
-        print('INSERT INTO formulario (name, texto1, texto2, comparacion) VALUES ("'+usuario +'", "'+texto1 +'", "'+texto2+'", 0)')
         query = 'INSERT INTO formulario (name, texto1, texto2, comparacion) VALUES ("'+usuario +'", "'+texto1 +'", "'+texto2+'", 0)'
+        print('INSERT INTO formulario (name, texto1, texto2, comparacion) VALUES ("'+usuario +'", "'+texto1 +'", "'+texto2+'", 0)')
 
     cursor.execute(query)
     connection.commit()
-
     
-    # Fetch the results
-    results = cursor.fetchall()
-
-    # Print the results
-    for result in results:
-        print(result)
-   
+    cursor.close()
+    connection.close()
 
     return render_template('result.html', txt1=texto1, txt2=texto2, compar=comparacion)
 
@@ -67,6 +59,7 @@ def texto(texto1, texto2):
     else:
         comparacion = 0
     
+    print("Valor de comparacion -> " +str(comparacion))
     return comparacion
 
  
